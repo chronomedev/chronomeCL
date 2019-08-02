@@ -29,32 +29,35 @@ namespace ConsoleApp1
                 if (deviceCount == 0)
                 {
                     Console.WriteLine("Tidak ada device ditemukan {0}", CudafyModes.Target);
-                } else {
-Console.WriteLine("--------------Program Processing VGA ------------");
-                Console.WriteLine("-------------- C h r o n o M E Dev ------------");
-                GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, CudafyModes.DeviceId); // ngambil device gpunya yang terdaftar pertama sesuai device id
-                Console.WriteLine("Radeon RX 570/580 Series" );
-                Console.WriteLine("Code name: " + gpu.GetDeviceProperties(false).Name);
-                Console.WriteLine("Memori VGA: " + gpu.GetDeviceProperties(false).TotalMemory);
-                Console.WriteLine("Jumlah Pipeline " + gpu.GetDeviceProperties(false).MultiProcessorCount); //ROPSnya diambil
-
-                Boolean selesai = false;
-                String komen = "";
-                do
+                }
+                else
                 {
-                   gpu_calculation.eksekusi();
-                    //cpu_tes.eksekusi();
-                    cpu_tes.prima();
-                    Console.WriteLine("Done!");
+                    Console.WriteLine("--------------Program Processing VGA ------------");
+                    Console.WriteLine("-------------- C h r o n o M E Dev ------------");
+                    GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, CudafyModes.DeviceId); // ngambil device gpunya yang terdaftar pertama sesuai device id
+                    Console.WriteLine("Radeon RX 570/580 Series");
+                    Console.WriteLine("Code name: " + gpu.GetDeviceProperties(false).Name);
+                    Console.WriteLine("Memori VGA: " + gpu.GetDeviceProperties(false).TotalMemory);
+                    Console.WriteLine("Jumlah Pipeline " + gpu.GetDeviceProperties(false).MultiProcessorCount); //ROPSnya diambil
 
-                    Console.Write("> ");
-                    komen = Console.ReadLine().ToString();
+                    Boolean selesai = false;
+                    String komen = "";
+                    do
+                    {
+                        gpu_calculation.eksekusi();
+                        //cpu_tes.eksekusi();
+                        cpu_tes.prima();
+                        Console.WriteLine("Done!");
+
+                        Console.Write("> ");
+                        komen = Console.ReadLine().ToString();
 
 
-                } while (komen != "q");
-                
-            //Console.WriteLine("Done!");
-            //    Console.ReadKey();
+                    } while (komen != "q");
+
+                    //Console.WriteLine("Done!");
+                    //    Console.ReadKey();
+                }
             }
             catch (Exception ex)
             {
