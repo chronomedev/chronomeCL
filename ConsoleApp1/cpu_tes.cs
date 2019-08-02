@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 
-//Prime number calculation using CPU
-//2019 ChronomeDev
+//HSD GPU basic utilization
+//Copyright 2019 ChronomeDev
+//and Cudafy
 
-
+//Calculate using CPU
+//Kalkulasi menggunakan Prosesor
 namespace ConsoleApp1
 {
     class cpu_tes
