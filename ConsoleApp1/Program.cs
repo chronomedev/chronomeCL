@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
 using Cudafy;
 using Cudafy.Host; 
 using Cudafy.Translator;
@@ -20,6 +15,8 @@ namespace ConsoleApp1
         [STAThread]
         static void Main(string[] args)
         {
+
+            String komen;
             CudafyModes.Target = eGPUType.OpenCL;
             CudafyModes.DeviceId = 0; 
             CudafyTranslator.Language = CudafyModes.Target == eGPUType.OpenCL ? eLanguage.OpenCL : eLanguage.Cuda;
@@ -34,29 +31,23 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("--------------Program Processing VGA ------------");
                     Console.WriteLine("-------------- C h r o n o M E Dev ------------");
-                    GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, CudafyModes.DeviceId); // ngambil device gpunya yang terdaftar pertama sesuai device id
+                    GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, CudafyModes.DeviceId);
                     Console.WriteLine("Radeon RX 570/580 Series");
                     Console.WriteLine("Code name: " + gpu.GetDeviceProperties(false).Name);
                     Console.WriteLine("Memori VGA: " + gpu.GetDeviceProperties(false).TotalMemory);
-                    Console.WriteLine("Jumlah Pipeline " + gpu.GetDeviceProperties(false).MultiProcessorCount); //ROPSnya diambil
+                    Console.WriteLine("Jumlah Pipeline " + gpu.GetDeviceProperties(false).MultiProcessorCount); 
 
-                    Boolean selesai = false;
-                    String komen = "";
                     do
                     {
-                        gpu_calculation.eksekusi();
+                        gpu_calculation.primaGPU();
+                        //gpu_calculation.eksekusi();
                         //cpu_tes.eksekusi();
                         cpu_tes.prima();
                         Console.WriteLine("Done!");
 
-                        Console.Write("> ");
+                        Console.Write("Press q to quit > ");
                         komen = Console.ReadLine().ToString();
-
-
                     } while (komen != "q");
-
-                    //Console.WriteLine("Done!");
-                    //    Console.ReadKey();
                 }
             }
             catch (Exception ex)
