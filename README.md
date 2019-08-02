@@ -1,2 +1,3 @@
 # chronomeCL
-ChronomeCL is an application that demonstrate utilizing GPU
+ChronomeCL is an application that demonstrate utilizing GPU to calculate some instruction based on openCL and Cudafy.
+2019 ChronomeDev 
